@@ -1,13 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import layout from "../views/layout";
+import Layout from "../views/layout";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    component: layout
+    path: "/translate",
+    component: Layout,
+    redirect: "/translate",
+    children: [
+      {
+        path: "/translate",
+        component: () => import("@/views/translate/index"),
+        name: "translate"
+      }
+    ]
   }
 ];
 
